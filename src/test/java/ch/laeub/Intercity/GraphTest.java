@@ -44,10 +44,14 @@ public class GraphTest {
         nodes.get("Bern").connect(nodes.get("Romanshorn"), true);
         nodes.get("Bern").connect(nodes.get("Genf"), true);
 
+        // TODO: Make connections
+
     }
 
     @Test
     public void graphtest() {
+
+        // TODO: Write test
 
     }
 
