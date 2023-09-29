@@ -29,7 +29,7 @@ public class Driver {
         // Or with less code
         countries.sort(Comparator.comparingInt(Country::getPopulation));
         // Printing out the countries
-        countries.forEach((c1) -> System.out.println(c1.getPopulation()));
+        countries.forEach( c -> System.out.println(c.getPopulation()));
     }
 
 }
