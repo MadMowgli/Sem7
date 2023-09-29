@@ -27,7 +27,7 @@ public class Driver {
         System.out.println("\n");
 
         // Or with less code
-        Collections.sort(countries, Comparator.comparingInt(Country::getPopulation));
+        countries.sort(Comparator.comparingInt(Country::getPopulation));
         // Printing out the countries
         countries.forEach((c1) -> System.out.println(c1.getPopulation()));
     }
