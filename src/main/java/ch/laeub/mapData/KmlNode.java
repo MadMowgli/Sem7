@@ -20,4 +20,9 @@ public class KmlNode {
     public Coordinate getCoordinate() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return this.name + ";" + this.coordinate.getEast() + ";" + this.coordinate.getWest();
+    }
 }

@@ -37,7 +37,8 @@ public class KmlEdge {
             this.node1 = nodes.get(0).getName();
             this.node2 = nodes.get(1).getName();
         } else {
-            System.out.println();
+            System.out.println(nodes.get(0).getName());
+            System.out.println(this.length);
         }
 
     }
@@ -57,4 +58,10 @@ public class KmlEdge {
     public ArrayList<Coordinate> getCoordinates() {
         return coordinates;
     }
+
+    @Override
+    public String toString() {
+        return this.node1 + ";" + this.node2 + ";" + this.length.toString();
+    }
+
 }

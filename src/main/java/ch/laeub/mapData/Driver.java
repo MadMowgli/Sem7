@@ -15,7 +15,8 @@ public class Driver {
         // Connect edges to nodes, naming the edges correctly
         edgeList.stream().forEach(edge -> edge.connectEdge(nodeList));
 
-        // TODO: We still have some edges without length information - see error logs
+        // Write to CSV files
+        transformer.writeToCsv();
 
         System.out.println();
     }
