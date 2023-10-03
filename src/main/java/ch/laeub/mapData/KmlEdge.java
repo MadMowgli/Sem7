@@ -2,6 +2,7 @@ package ch.laeub.mapData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class KmlEdge {
 
@@ -25,13 +26,9 @@ public class KmlEdge {
     public void connectEdge(ArrayList<KmlNode> nodeList) {
 
         // Connect edges with nodes where possible
-        ArrayList<KmlNode> nodes = new ArrayList<>();
-
-        for(KmlNode node : nodeList) {
-            if(this.coordinates.contains(node.getCoordinate())) {
-                nodes.add(node);
-            }
-        }
+        ArrayList<KmlNode> nodes = nodeList.stream()
+                .filter(node -> this.coordinates.contains(node.getCoordinate()))
+                .collect(Collectors.toCollection(ArrayList::new));
 
         if(nodes.size() == 2) {
             this.node1 = nodes.get(0).getName();
