@@ -4,12 +4,12 @@ public class KmlNode {
 
     // Fields
     private final String name;
-    private final Coordinate coordinate;
+    private final Coordinate coordinates;
 
     // Constructor
     public KmlNode(String name, String[] coordinates) {
         this.name = name;
-        this.coordinate = new Coordinate(coordinates[1], coordinates[0]);
+        this.coordinates = new Coordinate(coordinates[1], coordinates[0]);
     }
 
     // Methods
@@ -17,12 +17,12 @@ public class KmlNode {
         return name;
     }
 
-    public Coordinate getCoordinate() {
-        return coordinate;
+    public Coordinate getCoordinates() {
+        return coordinates;
     }
 
     @Override
     public String toString() {
-        return this.name + ";" + this.coordinate.getEast() + ";" + this.coordinate.getWest();
+        return this.name + ";" + this.coordinates.getEast() + ";" + this.coordinates.getWest();
     }
 }

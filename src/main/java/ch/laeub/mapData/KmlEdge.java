@@ -2,6 +2,7 @@ package ch.laeub.mapData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class KmlEdge {
@@ -27,15 +28,29 @@ public class KmlEdge {
 
         // Connect edges with nodes where possible
         ArrayList<KmlNode> nodes = nodeList.stream()
-                .filter(node -> this.coordinates.contains(node.getCoordinate()))
+                .filter(node -> this.coordinates.contains(node.getCoordinates()))
                 .collect(Collectors.toCollection(ArrayList::new));
 
         if(nodes.size() == 2) {
+            // If we end up here, we found our two nodes
             this.node1 = nodes.get(0).getName();
             this.node2 = nodes.get(1).getName();
+        } else if(nodes.size() == 1) {
+
+            // If we end up here, we only got 1 node. Search for the second one
+
+            // TODO: I don't think this works yet
+            ArrayList<KmlNode> sortedNodes = nodeList.stream()
+                    .filter(node -> !nodes.contains(node))
+                    .sorted((node1, node2) -> node1.getCoordinates().compareTo(node2.getCoordinates()))
+                    .collect(Collectors.toCollection(ArrayList::new));
+
+            this.node1 = sortedNodes.get(0).getName();
+            System.out.println(node1);
+            System.out.println(node2);
         } else {
-            System.out.println(nodes.get(0).getName());
-            System.out.println(this.length);
+            System.out.println("Found " + nodes.size() + " nodes for edge.");
+            nodes.forEach(System.out::println);
         }
 
     }
