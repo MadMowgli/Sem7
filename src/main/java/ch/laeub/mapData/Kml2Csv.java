@@ -52,10 +52,11 @@ public class Kml2Csv {
                     Node item = placemarkList.item(i);
                     if (item.getChildNodes().item(0).getTextContent().equalsIgnoreCase("marker")) {
                         String name = item.getChildNodes().item(1).getTextContent();
+                        String[] coordinateStrings = item.getChildNodes().item(2).getTextContent().split(", ");
                         String[] coordinates = item.getChildNodes().item(4).getTextContent()
                                 .replace("1clampToGround", "")
                                 .split(",| ");
-                        this.nodeList.add(new KmlNode(name, coordinates));
+                        this.nodeList.add(new KmlNode(name, coordinates, coordinateStrings));
                         System.out.println("New node created");
                     } else if (item.getChildNodes().item(0).getTextContent().equalsIgnoreCase("linepolygon")) {
 
@@ -107,6 +108,7 @@ public class Kml2Csv {
                     this.nodeList.forEach(node -> {
                         try {
                             fileWriter.write(node.toString() + "\n");
+                            fileWriter.flush();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -128,6 +130,7 @@ public class Kml2Csv {
                     this.edgeList.forEach(edge -> {
                         try {
                             fileWriter.write(edge.toString() + "\n");
+                            fileWriter.flush();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }

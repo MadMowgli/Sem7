@@ -40,14 +40,14 @@ public class KmlEdge {
             // If we end up here, we only got 1 node. Search for the second one
 
             // TODO: I don't think this works yet
-            ArrayList<KmlNode> sortedNodes = nodeList.stream()
-                    .filter(node -> !nodes.contains(node))
-                    .sorted((node1, node2) -> node1.getCoordinates().compareTo(node2.getCoordinates()))
-                    .collect(Collectors.toCollection(ArrayList::new));
-
-            this.node1 = sortedNodes.get(0).getName();
-            System.out.println(node1);
-            System.out.println(node2);
+//            ArrayList<KmlNode> sortedNodes = nodeList.stream()
+//                    .filter(node -> !nodes.contains(node))
+//                    .sorted((node1, node2) -> node1.getCoordinates().compareTo(node2.getCoordinates()))
+//                    .collect(Collectors.toCollection(ArrayList::new));
+//
+//            this.node1 = sortedNodes.get(0).getName();
+//            System.out.println(node1);
+//            System.out.println(node2);
         } else {
             System.out.println("Found " + nodes.size() + " nodes for edge.");
             nodes.forEach(System.out::println);
