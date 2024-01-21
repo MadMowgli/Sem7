@@ -1,4 +1,4 @@
-package ch.laeub.Intercity;
+package test.java.ch.laeub.Intercity;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,13 +9,13 @@ import java.util.HashMap;
 public class GraphTest {
 
     // Fields
-    Graph graph;
+    ch.laeub.Intercity.Graph graph;
 
     // Methods
 
     @BeforeEach
     public void setup() {
-        this.graph = new Graph("cityMap");
+        this.graph = new ch.laeub.Intercity.Graph("cityMap");
         graph.addNode("Bern");
         graph.addNode("Olten");
         graph.addNode("Spiez");
