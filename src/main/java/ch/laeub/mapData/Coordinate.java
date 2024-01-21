@@ -1,13 +1,24 @@
 package ch.laeub.mapData;
 
-public class Coordinate {
+import java.util.Objects;
+
+public class Coordinate implements Comparable{
 
     private String east;
     private String west;
+    private Double eastD;
+    private Double westD;
 
     public Coordinate(String east, String west) {
         this.east = east;
         this.west = west;
+
+        try {
+            this.eastD = Double.parseDouble(east);
+            this.westD = Double.parseDouble(west);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getEast() {
@@ -16,6 +27,10 @@ public class Coordinate {
     public String getWest() {
         return west;
     }
+
+    public Double getEastD() { return eastD; }
+
+    public Double getWestD() { return westD; }
 
     @Override
     public boolean equals(Object object) {
@@ -35,4 +50,22 @@ public class Coordinate {
 
     }
 
+
+    @Override
+    public int compareTo(Object object) {
+
+        // Try to cast the object
+        try {
+            Coordinate comparer = (Coordinate) object;
+
+            Double comprarerTotal = comparer.getEastD() + comparer.getWestD();
+            Double thisTotal = this.getEastD() + this.getWestD();
+
+            return thisTotal.compareTo(comprarerTotal);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
